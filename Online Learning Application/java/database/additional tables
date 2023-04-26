@@ -1,0 +1,31 @@
+START TRANSACTION;
+DROP TABLE IF EXISTS course_card CASCADE;
+DROP TABLE IF EXISTS user_course CASCADE;
+
+CREATE TABLE course
+(
+	course_id serial,
+	course_name varchar(64) NOT NULL,
+	instructor_id int,
+	CONSTRAINT PK_course_card PRIMARY KEY(course_id)
+);
+CREATE TABLE user_course
+(
+	course_id int NOT NULL,
+	user_id int NOT NULL,
+	
+CONSTRAINT PK_user_course_id PRIMARY KEY (user_course_id)		
+											
+);
+CREATE TABLE course_status(
+	card_id serial,
+	
+	course_id NOT NULL,
+	course_name varchar(64) NOT NULL,
+	boolean complete NOT NULL,
+	CONSTRAINT PK_card_id PRIMARY KEY (card_id),
+	CONSTRAINT FK_pet_customer FOREIGN KEY(customer_id) REFERENCES customer (customer_id)
+);
+
+
+COMMIT;
